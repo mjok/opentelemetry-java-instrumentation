@@ -1,0 +1,29 @@
+plugins {
+  id "com.github.johnrengelman.shadow"
+}
+
+apply from: "$rootDir/gradle/java.gradle"
+apply from: "$rootDir/gradle/publish.gradle"
+
+archivesBaseName = 'javaagent-exporters-tnt'
+
+dependencies {
+  compileOnly project(':javaagent-spi')
+
+  compile group: 'com.jkoolcloud', name: 'tnt4j-opentelemetry', version: '0.1-SNAPSHOT'
+
+  annotationProcessor deps.autoservice
+  compileOnly deps.autoservice
+
+  compileOnly deps.opentelemetrySdk
+  compileOnly deps.opentelemetryApi
+}
+
+repositories {
+  mavenLocal()
+}
+
+jar.enabled = false
+shadowJar {
+  archiveClassifier = ''
+}
