@@ -9,18 +9,15 @@ archivesBaseName = 'javaagent-exporters-tnt'
 
 dependencies {
   compileOnly project(':javaagent-spi')
+  compileOnly(deps.opentelemetrySdk)
 
   compile group: 'com.jkoolcloud', name: 'tnt4j-opentelemetry', version: '0.1-SNAPSHOT'
 
   annotationProcessor deps.autoservice
   compileOnly deps.autoservice
 
-  compileOnly deps.opentelemetrySdk
   compileOnly deps.opentelemetryApi
-}
 
-repositories {
-  mavenLocal()
 }
 
 jar.enabled = false
