@@ -11,7 +11,9 @@ dependencies {
   compileOnly project(':javaagent-spi')
   compileOnly(deps.opentelemetrySdk)
 
-  compile group: 'com.jkoolcloud', name: 'tnt4j-opentelemetry', version: '0.1-SNAPSHOT'
+  compile group: 'com.jkoolcloud', name: 'tnt4j-opentelemetry', version: '0.2-SNAPSHOT', {
+    exclude group: 'io.opentelemetry'
+  }
 
   annotationProcessor deps.autoservice
   compileOnly deps.autoservice
